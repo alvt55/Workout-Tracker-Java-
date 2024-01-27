@@ -20,10 +20,17 @@ and goals, but I believe that staying organized also means using tools which are
 a person**. My goal is to create a program which can be used by a wider range of people, but still simple
 enough to personalize. 
 
-## Task 3
-A *bulleted* list:
-- item 1
-- item 2
-- item 3
+## Task 3 - User Stories 
+- As a user, I want to add a recent swimming session to my fitness tracker
+along with the type of stroke and number of laps done 
+- As a user, I want to add a recent weight lifting session to my tracker along with 
+the exercises done
+- As a user, I want to add a certain exercise to my weight lifting session along with 
+the amount of sets, repetitions and weight done for that exercise 
+- As a user, I want to see all the personal records set for back squat
+along with the respective dates 
+- As a user, I want to see the see my fastest 50m freestyle time along with the 
+date. 
+
 
 An example of text with **bold** and *italic* fonts.  
