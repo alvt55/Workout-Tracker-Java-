@@ -9,7 +9,7 @@ This can include weight lifting, calisthenics skills, swimming and any sports ac
 An example of a function that this application will have is being able to have accurate statistics
 (ex. most weight lifting in a single session) that summarize a user's fitness journey. 
 The project will have multiple classes which represent the different activties. These classes will 
-have fields which keep track of valuable information (ex. repetitions, sets, personal records, etc.).
+have fields which keep track of valuable information (ex. repetitions, sets, etc.).
 
 Since 2023 just ended, I believe many people are interested in becoming a better version of themselves
 through improving their confidence and athleticism. This will keep track of their progress while 
@@ -27,10 +27,8 @@ along with the type of stroke and number of laps done
 the exercises done
 - As a user, I want to add a certain exercise to my weight lifting session along with 
 the amount of sets, repetitions and weight done for that exercise 
-- As a user, I want to see all the personal records set for back squat
-along with the respective dates 
-- As a user, I want to see the see my fastest 50m freestyle time along with the 
-date. 
+- As a user, I want to see a list of the personal records set for each exercise along with the respective dates 
+- As a user, I want to see the amount of times I have went to the gym 
 
 
 An example of text with **bold** and *italic* fonts.  
