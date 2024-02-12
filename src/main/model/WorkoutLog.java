@@ -2,63 +2,73 @@ package model;
 
 import java.util.ArrayList;
 
-// stores all types of workouts
+// stores all GymSessions and GymPersonalBests
 public class WorkoutLog {
 
-    private ArrayList<GymPersonalBest> gymPersonalBests;
+    private ArrayList<PersonalBest> personalBests;
     private ArrayList<GymSession> gymSessions;
-    private ArrayList<SwimSession> swimSessions;
 
-    public WorkoutLog(ArrayList<GymPersonalBest> pb, ArrayList<GymSession> g, ArrayList<SwimSession> s) {
-        gymPersonalBests = pb;
+    // EFFECTS: constructor for creating log with workouts already present
+    public WorkoutLog(ArrayList<PersonalBest> pb, ArrayList<GymSession> g) {
+        personalBests = pb;
         gymSessions = g;
-        swimSessions = s;
+    }
 
+    // EFFECTS: default constructor
+    public WorkoutLog() {
+        personalBests = new ArrayList<PersonalBest>();
+        gymSessions = new ArrayList<GymSession>();
     }
 
 
-   // REQUIRES: gymSessions.length > 0
+    // REQUIRES: gymSessions.length > 0
     // MODIFIES: none
     // EFFECTS: counts all the gym sessions and returns
     public int amountOfGymSessions() {
-
+        return gymSessions.size();
     }
 
     // REQUIRES: none
     // MODIFIES: none
-    // EFFECTS: searches through personal bests and gym session and returns date with most cumulative weight lifted
+    // EFFECTS: returns date and weight of personal best OR GymSession with most cumulative weight lifted
     public String mostWeightLifted() {
+        int currWeight = 0;
+        String currDate = "";
 
+        for (PersonalBest pb : personalBests) {
+            if (pb.getWeight() > currWeight) {
+                currWeight = pb.getWeight();
+                currDate = pb.getDate();
+            }
+        }
+
+        for (GymSession g : gymSessions) {
+            if (g.totalWeightLifted() > currWeight) {
+                currWeight = g.totalWeightLifted();
+                currDate = g.getDate();
+            }
+        }
+
+        return "Most Weight Lifted\n" + "Date: " + currDate + "\n" + "Weight: " + currWeight;
     }
 
 
     // MODIFIES: this
     // EFFECTS: adds a gym personal best to log
-    public void addGymPersonalBest(GymPersonalBest pb) {
-
-
+    public void addPersonalBest(PersonalBest pb) {
+        personalBests.add(pb);
     }
 
     // MODIFIES: this
     // EFFECTS: adds a gym session to log
     public void addGymSession(GymSession g) {
-
-
-    }
-
-    // MODIFIES: this
-    // EFFECTS: adds a swim session to log
-    public void addSwimSession(SwimSession pb) {
-
+        gymSessions.add(g);
 
     }
 
-    // REQUIRES: none
-    // MODIFIES: none
-    // EFFECTS: return summaries of all gym personal bests
-    public String getAllGymPersonalBests() {
 
-    }
+
+
 
 
 
