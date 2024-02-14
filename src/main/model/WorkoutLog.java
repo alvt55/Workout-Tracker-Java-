@@ -14,11 +14,6 @@ public class WorkoutLog {
         gymSessions = g;
     }
 
-    // EFFECTS: default constructor
-    public WorkoutLog() {
-        personalBests = new ArrayList<PersonalBest>();
-        gymSessions = new ArrayList<GymSession>();
-    }
 
 
     // REQUIRES: gymSessions.length > 0
@@ -72,7 +67,6 @@ public class WorkoutLog {
     // EFFECTS: adds a gym session to log
     public void addGymSession(GymSession g) {
         gymSessions.add(g);
-
     }
 
 

@@ -93,6 +93,16 @@ class WorkoutLogTest {
         assertEquals(answer ,log.mostWeightLifted());
     }
 
+    @Test
+    public void testAllPersonalBests() {
+        log.addPersonalBest(pb1);
+        log.addPersonalBest(pb2);
+        String answer = "Personal Best: " + pb1.getName() + " - " + pb1.getWeight() + "lbs on " + pb1.getDate()
+                + "\n" + "Personal Best: " + pb2.getName() + " - " + pb2.getWeight() + "lbs on " + pb2.getDate() + "\n";
+        assertEquals(answer, log.allPersonalBests());
+    }
+
+    // add gym session + personal best test
 
 
 
