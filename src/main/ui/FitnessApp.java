@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 // app which uses user interactions and the WorkoutLog class
 public class FitnessApp {
-
+//n
 
     private WorkoutLog log;
     private ArrayList<PersonalBest> personalBests;
