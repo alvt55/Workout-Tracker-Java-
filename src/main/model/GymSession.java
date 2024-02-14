@@ -42,6 +42,7 @@ public class GymSession {
         return date;
     }
 
+    // EFFECTS: return summary
     public String toString() {
         String answer = getDate() + "\n";
 

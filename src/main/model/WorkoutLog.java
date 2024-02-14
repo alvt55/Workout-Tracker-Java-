@@ -57,6 +57,9 @@ public class WorkoutLog {
         return list;
     }
 
+    // REQUIRES: gymSessions is not empty
+    // MODIFIES: n/a
+    // EFFECTS: returns list of all gym sessions
     public String allGymSessions() {
         String list = "";
 
