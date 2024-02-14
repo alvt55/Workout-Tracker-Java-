@@ -30,17 +30,12 @@ public class WorkoutLog {
 
     // REQUIRES: none
     // MODIFIES: none
-    // EFFECTS: returns date and weight of personal best OR GymSession with most cumulative weight lifted
+    // EFFECTS: returns date and weight of GymSession with most cumulative weight lifted
+    // if same weight, takes the first occurrence
     public String mostWeightLifted() {
         int currWeight = 0;
         String currDate = "";
 
-        for (PersonalBest pb : personalBests) {
-            if (pb.getWeight() > currWeight) {
-                currWeight = pb.getWeight();
-                currDate = pb.getDate();
-            }
-        }
 
         for (GymSession g : gymSessions) {
             if (g.totalWeightLifted() > currWeight) {
@@ -52,6 +47,20 @@ public class WorkoutLog {
         return "Most Weight Lifted\n" + "Date: " + currDate + "\n" + "Weight: " + currWeight;
     }
 
+
+
+    // REQUIRES: PersonalBests is not empty
+    // MODIFIES: n/a
+    // EFFECTS: returns list of all personal bests with date and weight
+    public String allPersonalBests(){
+        String list = "";
+
+        for (PersonalBest pb : personalBests) {
+            list += pb.toString() + "\n";
+        }
+
+        return list;
+    }
 
     // MODIFIES: this
     // EFFECTS: adds a gym personal best to log

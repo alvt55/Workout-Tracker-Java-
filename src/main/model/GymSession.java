@@ -16,7 +16,7 @@ public class GymSession {
         listOfGymExercise = g;
     }
 
-    // EFFECTS: totals up all the weight lifted in the session
+    // EFFECTS: totals up and returns all the weight lifted in the session
     public int totalWeightLifted() {
         int total = 0;
 
