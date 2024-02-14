@@ -42,5 +42,17 @@ public class GymSession {
         return date;
     }
 
+    public String toString() {
+        String answer = getDate() + "\n";
+
+        for (GymExercise g : listOfGymExercise) {
+            answer += g.toString() + "\n";
+
+        }
+
+        return answer;
+    }
+
+
 
 }

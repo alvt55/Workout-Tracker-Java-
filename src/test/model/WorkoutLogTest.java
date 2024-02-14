@@ -102,7 +102,35 @@ class WorkoutLogTest {
         assertEquals(answer, log.allPersonalBests());
     }
 
-    // add gym session + personal best test
+
+
+
+    @Test
+    public void testAllGymSessions() {
+        log.addGymSession(session1);
+        log.addGymSession(session2);
+        assertEquals(session1.toString() + "\n" + session2.toString() + "\n", log.allGymSessions());
+    }
+
+
+
+    @Test
+    public void testAddPersonalBest() {
+        log.addPersonalBest(pb1);
+        assertEquals(pb1.toString() + "\n",log.allPersonalBests());
+    }
+
+    @Test
+    public void testAddGymSession() {
+        log.addGymSession(session1);
+        assertEquals(session1.toString() + "\n", log.allGymSessions());
+    }
+
+
+
+
+
+
 
 
 

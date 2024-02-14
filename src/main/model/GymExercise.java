@@ -55,10 +55,10 @@ public class GymExercise {
     // EFFECTS: returns summary
     public String toString() {
         if (bodyWeight == 0) {
-            return sets + "x" + reps + " (" + weight + ") " + name;
+            return getSets() + "x" + getReps() + " (" + getWeight() + ") " + getName();
         }
 
-        return sets + "x" + reps + " (bodyweight) " + bodyWeight;
+        return getSets() + "x" + getReps() + " (bodyweight) " + getBodyWeight();
     }
 
 

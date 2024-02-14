@@ -57,6 +57,16 @@ public class WorkoutLog {
         return list;
     }
 
+    public String allGymSessions() {
+        String list = "";
+
+        for (GymSession g : gymSessions) {
+            list += g.toString() + "\n";
+        }
+
+        return list;
+    }
+
     // MODIFIES: this
     // EFFECTS: adds a gym personal best to log
     public void addPersonalBest(PersonalBest pb) {
@@ -68,6 +78,8 @@ public class WorkoutLog {
     public void addGymSession(GymSession g) {
         gymSessions.add(g);
     }
+
+
 
 
 

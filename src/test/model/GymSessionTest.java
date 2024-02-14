@@ -67,6 +67,12 @@ public class GymSessionTest {
         assertEquals(temp, session.getListOfGymExercise());
     }
 
+    @Test
+    public void testtoString() {
+        String answer = session.getDate() + "\n" + exercise1.toString() + "\n" + bwExercise.toString() + "\n";
+        assertEquals(answer, session.toString());
+    }
+
 
 
 
