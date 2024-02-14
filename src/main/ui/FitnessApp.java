@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 // app which uses user interactions and the WorkoutLog class
+// NOTE: based on Teller App class given in Phase 1 Module
 public class FitnessApp {
 //n
 

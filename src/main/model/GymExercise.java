@@ -22,7 +22,6 @@ public class GymExercise {
     // REQUIRES: one of bodyWeight or weight must be 0
     // MODIFIES: none
     // EFFECTS: returns the total weight lifted for this exercise
-
     public int getTotalWeight() {
 
         if (bodyWeight == 0) {
