@@ -52,7 +52,7 @@ public class WorkoutLog {
     // REQUIRES: PersonalBests is not empty
     // MODIFIES: n/a
     // EFFECTS: returns list of all personal bests with date and weight
-    public String allPersonalBests(){
+    public String allPersonalBests() {
         String list = "";
 
         for (PersonalBest pb : personalBests) {

@@ -18,13 +18,17 @@ public class GymExercise {
         sets = s;
         reps = r;
     }
+
     // REQUIRES: one of bodyWeight or weight must be 0
     // MODIFIES: none
     // EFFECTS: returns the total weight lifted for this exercise
+
     public int getTotalWeight() {
+
         if (bodyWeight == 0) {
             return reps * sets * weight; // weight lifting exercise
         }
+
         return reps * sets * bodyWeight; // body weight exercise
     }
 
@@ -54,7 +58,7 @@ public class GymExercise {
             return sets + "x" + reps + " (" + weight + ") " + name;
         }
 
-         return sets + "x" + reps + " (bodyweight) " + bodyWeight;
+        return sets + "x" + reps + " (bodyweight) " + bodyWeight;
     }
 
 
