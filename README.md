@@ -27,4 +27,7 @@ the amount of sets, repetitions and weight done for that exercise
 - As a user, I want to see a list of the personal records set for each exercise along with the respective dates 
 - As a user, I want to see the amount of times I have went to the gym 
 
+## Phase 2 - User stories 
+- As a user, I want to save my gym logs and personal best entries to file (if I so choose). 
+- As a user, when the FitnessApp application starts, I want to have the option of loading my workout records and history from file. 
 

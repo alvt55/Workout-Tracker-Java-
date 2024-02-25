@@ -52,18 +52,25 @@ public class FitnessApp {
     // EFFECTS: processes user command
     private void processCommand(String command) {
         if (command.equals("a")) {
+            System.out.println();
             doAmountOfGymSessions();
         } else if (command.equals("m")) {
+            System.out.println();
             doMostWeightLifted();
         } else if (command.equals("p")) {
+            System.out.println();
             doAllPersonalBests();
         } else if (command.equals("g")) {
+            System.out.println();
             doAllGymSessions();
         } else if (command.equals("b")) {
+            System.out.println();
             doAddPersonalBest();
         } else if (command.equals("gs")) {
+            System.out.println();
             doAddGymSession();
         } else {
+            System.out.println();
             System.out.println("Selection not valid...");
         }
     }
@@ -91,6 +98,7 @@ public class FitnessApp {
         System.out.println("\tg -> list of all gym sessions");
         System.out.println("\tb -> add a personal best");
         System.out.println("\tgs -> add a gymSession");
+
     }
 
     // EFFECTS: displays int amount of total gym sessions
