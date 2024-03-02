@@ -1,5 +1,8 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 // represents a collection of gym exercises and info about the workout
@@ -54,6 +57,24 @@ public class GymSession {
         return answer;
     }
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("date", date);
+        json.put("listofgymexercises", gymExercisesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns GymExercises in this session as a JSON array
+    private JSONArray gymExercisesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (GymExercise g : listOfGymExercise) {
+            jsonArray.put(g.toJson());
+        }
+
+        return jsonArray;
+    }
 
 
 }

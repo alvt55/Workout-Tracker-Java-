@@ -1,5 +1,8 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 // stores all GymSessions and GymPersonalBests
@@ -83,6 +86,35 @@ public class WorkoutLog {
     }
 
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("personalbests", personalBestsToJson());
+        json.put("gymsessions", gymSessionsToJson());
+        return json;
+    }
+
+    // EFFECTS: returns personalbests in this workoutlog as a JSON array
+    private JSONArray personalBestsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (PersonalBest p : personalBests) {
+            jsonArray.put(p.toJson());
+        }
+
+        return jsonArray;
+    }
+
+    // EFFECTS: returns gymsessions in this workoutlog as a JSON array
+    private JSONArray gymSessionsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (GymSession g : gymSessions) {
+            jsonArray.put(g.toJson());
+        }
+
+        return jsonArray;
+    }
 
 
 

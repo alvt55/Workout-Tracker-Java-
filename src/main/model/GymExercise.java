@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONObject;
+
 // represents a single gym exercise, will be added to a GymWorkout
 public class GymExercise {
     private String name;
@@ -60,6 +62,17 @@ public class GymExercise {
         return getSets() + "x" + getReps() + " (bodyweight) " + getBodyWeight();
     }
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("weight", weight);
+        json.put("bodyweight", bodyWeight);
+        json.put("reps", reps);
+        json.put("sets", sets);
+        return json;
+    }
+}
 
 
 

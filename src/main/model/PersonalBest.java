@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONObject;
+
 // represents a personal best set for a single repetition including the weight, name of exercise and date
 public class PersonalBest {
 
@@ -34,6 +36,15 @@ public class PersonalBest {
     // EFFECTS: returns summary along with name, date and weight lifted
     public String toString() {
         return "Personal Best: " + name + " - " + weight + "lbs on " + date;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("date", date);
+        json.put("weight", weight);
+        return json;
     }
 
 
