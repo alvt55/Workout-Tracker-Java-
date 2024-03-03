@@ -29,5 +29,6 @@ the amount of sets, repetitions and weight done for that exercise
 
 ## Phase 2 - User stories 
 - As a user, I want to save my gym logs and personal best entries to file (if I so choose). 
-- As a user, when the FitnessApp application starts, I want to have the option of loading my workout records and history from file. 
+- As a user, when the FitnessApp application starts, I want to have the option of loading my workout records 
+(sessions and personal bests) and history from file. 
 

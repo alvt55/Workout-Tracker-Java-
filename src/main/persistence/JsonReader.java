@@ -16,9 +16,8 @@ import java.util.stream.Stream;
 
 import model.WorkoutLog;
 import org.json.*;
-// citation
-// Represents a reader that reads workroom from JSON data stored in file
 
+// Represents a reader that reads workoutlog from JSON data stored in file
 public class JsonReader {
     private String source;
 
@@ -56,6 +55,9 @@ public class JsonReader {
         return wl;
     }
 
+
+    // MODIFIES: wl
+    // EFFECTS: parses gymsessions from JSON object and adds them to workoutlog
     private void addGymSessions(WorkoutLog wl, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("gymsessions");
         for (Object json : jsonArray) {
@@ -64,6 +66,8 @@ public class JsonReader {
         }
     }
 
+    // MODIFIES: wr
+    // EFFECTS: parses gymsession from JSON object and adds them to workoutlog
     private void addGymSession(WorkoutLog wl, JSONObject jsonObject) {
         String date = jsonObject.getString("date");
         ArrayList<GymExercise> ge = new ArrayList<GymExercise>();
@@ -72,6 +76,8 @@ public class JsonReader {
         wl.addGymSession(gs);
     }
 
+    // MODIFIES: s
+    // EFFECTS: parses gymexercises from JSON object and adds them to gymsession
     private void addGymExercises(GymSession s, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("listofgymexercises");
         for (Object json : jsonArray) {
@@ -80,6 +86,8 @@ public class JsonReader {
         }
     }
 
+    // MODIFIES: wr
+    // EFFECTS: parses gymexercise from JSON object and adds them to gymsession
     private void addGymExercise(GymSession s, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         int weight = jsonObject.getInt("weight");
