@@ -58,7 +58,7 @@ public class FitnessApp {
 
     // MODIFIES: this
     // EFFECTS: processes user command
-    @SuppressWarnings("checkstyle:MethodLength")
+
     private void processCommand(String command) {
         if (command.equals("amount")) {
             System.out.println();
@@ -70,19 +70,14 @@ public class FitnessApp {
             System.out.println();
             doAllPersonalBests();
         } else if (command.equals("allgs")) {
-            System.out.println();
             doAllGymSessions();
         } else if (command.equals("addpb")) {
-            System.out.println();
             doAddPersonalBest();
         } else if (command.equals("addgs")) {
-            System.out.println();
             doAddGymSession();
         } else if (command.equals("s")) {
-            System.out.println();
             saveWorkoutLog();
         } else if (command.equals("l")) {
-            System.out.println();
             loadWorkoutLog();
         } else {
             System.out.println();
