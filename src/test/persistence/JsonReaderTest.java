@@ -28,11 +28,11 @@ class JsonReaderTest extends JsonTest {
 
     @Test
     void testReaderEmptyWorkRoom() {
-        JsonReader reader = new JsonReader("./data/testReaderEmptyWorkRoom.json");
+        JsonReader reader = new JsonReader("./data/testReaderEmptyWorkoutLog.json");
         try {
             WorkoutLog wl = reader.read();
-            assertEquals(0, wl.amountOfGymSessions());
             assertEquals(0, wl.amountOfPersonalBests());
+            assertEquals(0, wl.amountOfGymSessions());
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
@@ -40,12 +40,12 @@ class JsonReaderTest extends JsonTest {
 
     @Test
     void testReaderGeneralWorkRoom() {
-        JsonReader reader = new JsonReader("./data/testReaderGeneralWorkRoom.json");
+        JsonReader reader = new JsonReader("./data/testReaderGeneralWorkoutLog.json");
         try {
             WorkoutLog wl = reader.read();
             assertEquals(2, wl.amountOfPersonalBests());
             assertEquals(2, wl.amountOfGymSessions());
-            assertEquals("Most Weight Lifted\n" + "Date: " + "5865" + "\n" + "Weight: " + "5865", wl.mostWeightLifted());
+            assertEquals("Most Weight Lifted\n" + "Date: " + "march 1" + "\n" + "Weight: " + "5865", wl.mostWeightLifted());
 
         } catch (IOException e) {
             fail("Couldn't read from file");
