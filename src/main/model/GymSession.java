@@ -2,11 +2,13 @@ package model;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import persistence.Writable;
 
+import java.io.Writer;
 import java.util.ArrayList;
 
 // represents a collection of gym exercises and info about the workout
-public class GymSession {
+public class GymSession implements Writable {
     private String date; // month day, year
     private ArrayList<GymExercise> listOfGymExercise;
 

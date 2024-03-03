@@ -2,11 +2,13 @@ package model;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import persistence.Writable;
 
+import java.io.Writer;
 import java.util.ArrayList;
 
 // stores all GymSessions and GymPersonalBests
-public class WorkoutLog {
+public class WorkoutLog implements Writable {
 
     private ArrayList<PersonalBest> personalBests;
     private ArrayList<GymSession> gymSessions;
@@ -24,6 +26,14 @@ public class WorkoutLog {
     // EFFECTS: counts all the gym sessions and returns
     public int amountOfGymSessions() {
         return gymSessions.size();
+    }
+
+
+    // REQUIRES: personalBests.length > 0
+    // MODIFIES: none
+    // EFFECTS: counts all the personal bests and returns
+    public int amountOfPersonalBests() {
+        return personalBests.size();
     }
 
     // REQUIRES: none

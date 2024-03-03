@@ -1,0 +1,45 @@
+{
+    "gymsessions": [
+        {
+            "date": "march 1",
+            "listofgymexercises": [
+                {
+                    "reps": 10,
+                    "sets": 3,
+                    "name": "pull ups",
+                    "bodyweight": 155,
+                    "weight": 0
+                },
+                {
+                    "reps": 9,
+                    "sets": 3,
+                    "name": "lat pullover",
+                    "bodyweight": 0,
+                    "weight": 45
+                }
+            ]
+        },
+        {
+            "date": "march 2",
+            "listofgymexercises": [{
+                "reps": 12,
+                "sets": 4,
+                "name": "chest press ",
+                "bodyweight": 0,
+                "weight": 100
+            }]
+        }
+    ],
+    "personalbests": [
+        {
+            "datePB": "jan 25",
+            "name": "bench ",
+            "weight": 135
+        },
+        {
+            "datePB": "feb 5",
+            "name": "squat",
+            "weight": 205
+        }
+    ]
+}

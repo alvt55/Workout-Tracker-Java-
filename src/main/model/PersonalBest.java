@@ -1,9 +1,12 @@
 package model;
 
 import org.json.JSONObject;
+import persistence.Writable;
+
+import java.io.Writer;
 
 // represents a personal best set for a single repetition including the weight, name of exercise and date
-public class PersonalBest {
+public class PersonalBest implements Writable {
 
     private String name; // name of exercise
     private String date; // month day, year
@@ -42,7 +45,7 @@ public class PersonalBest {
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);
-        json.put("date", date);
+        json.put("datePB", date);
         json.put("weight", weight);
         return json;
     }

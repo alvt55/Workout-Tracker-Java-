@@ -1,10 +1,10 @@
 package persistence;
 
-import model.Category;
+
+import model.GymExercise;
 import model.GymSession;
 import model.PersonalBest;
-import model.Thingy;
-import model.WorkRoom;
+
 
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -47,15 +47,52 @@ public class JsonReader {
 
     // EFFECTS: parses workoutlog from JSON object and returns it
     private WorkoutLog parseWorkoutLog(JSONObject jsonObject) {
-        ArrayList<PersonalBest> personalBests = (ArrayList<PersonalBest>) jsonObject.get("personalbests");
-        ArrayList<GymSession> gymSessions = (ArrayList<GymSession>) jsonObject.get("gymsessions");
+        ArrayList<PersonalBest> personalBests = new ArrayList<PersonalBest>();     //(ArrayList<PersonalBest>) jsonObject.get("personalbests");
+        ArrayList<GymSession> gymSessions = new ArrayList<GymSession>();     //(ArrayList<GymSession>) jsonObject.get("gymsessions");
         WorkoutLog wl = new WorkoutLog(personalBests, gymSessions);
         addPersonalBests(wl, jsonObject);
+        addGymSessions(wl, jsonObject);
         return wl;
     }
 
+    private void addGymSessions(WorkoutLog wl, JSONObject jsonObject) {
+        JSONArray jsonArray = jsonObject.getJSONArray("gymsessions");
+        for (Object json : jsonArray) {
+            JSONObject nextGS = (JSONObject) json;
+            addGymSession(wl, nextGS);
+        }
+    }
+
+    private void addGymSession(WorkoutLog wl, JSONObject jsonObject) {
+        String date = jsonObject.getString("date");
+        ArrayList<GymExercise> ge = new ArrayList<GymExercise>();
+        GymSession gs = new GymSession(ge, date);
+        addGymExercises(gs, jsonObject);
+        wl.addGymSession(gs);
+    }
+
+    private void addGymExercises(GymSession s, JSONObject jsonObject) {
+        JSONArray jsonArray = jsonObject.getJSONArray("listofgymexercises");
+        for (Object json : jsonArray) {
+            JSONObject nextEX = (JSONObject) json;
+            addGymExercise(s, nextEX);
+        }
+    }
+
+    private void addGymExercise(GymSession s, JSONObject jsonObject) {
+        String name = jsonObject.getString("name");
+        int weight = jsonObject.getInt("weight");
+        int bodyWeight = jsonObject.getInt("bodyweight");
+        int reps = jsonObject.getInt("reps");
+        int sets = jsonObject.getInt("sets");
+        GymExercise ge = new GymExercise(name, weight, bodyWeight, reps, sets);
+        s.addExercise(ge);
+    }
+
+
+
     // MODIFIES: wr
-    // EFFECTS: parses thingies from JSON object and adds them to workroom
+    // EFFECTS: parses personalbests from JSON object and adds them to workoutlog
     private void addPersonalBests(WorkoutLog wl, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("personalbests");
         for (Object json : jsonArray) {
@@ -65,14 +102,19 @@ public class JsonReader {
     }
 
     // MODIFIES: wr
-    // EFFECTS: parses thingy from JSON object and adds it to workroom
+    // EFFECTS: parses personalbest from JSON object and adds it to workoutlog
     private void addPersonalBest(WorkoutLog wl, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
-        String date = jsonObject.getString("date");
+        String date = jsonObject.getString("datePB");
         int weight = jsonObject.getInt("weight");
         PersonalBest pb = new PersonalBest(name, date, weight);
         wl.addPersonalBest(pb);
     }
+
+
+
+
+
 }
 
 

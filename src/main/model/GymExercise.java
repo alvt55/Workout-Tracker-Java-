@@ -1,9 +1,10 @@
 package model;
 
 import org.json.JSONObject;
+import persistence.Writable;
 
 // represents a single gym exercise, will be added to a GymWorkout
-public class GymExercise {
+public class GymExercise implements Writable {
     private String name;
     private int weight; // in lbs, 0 if body weight exercise
     private int bodyWeight; // in lbs, 0 if weight lifting exercise, actual body weight lifted
@@ -77,4 +78,4 @@ public class GymExercise {
 
 
 
-}
+
