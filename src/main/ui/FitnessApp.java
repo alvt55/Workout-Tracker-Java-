@@ -15,7 +15,7 @@ import java.util.Scanner;
 // app which uses user interactions and the WorkoutLog class
 // NOTE: based on Teller App class given in Phase 1 Module
 public class FitnessApp {
-    private static final String JSON_STORE = "workoutlog.json"; // make file for this?
+    private static final String JSON_STORE = "workoutlog.json";
 
 
     private WorkoutLog log;
@@ -58,6 +58,7 @@ public class FitnessApp {
 
     // MODIFIES: this
     // EFFECTS: processes user command
+    @SuppressWarnings("checkstyle:MethodLength")
     private void processCommand(String command) {
         if (command.equals("amount")) {
             System.out.println();
@@ -88,6 +89,7 @@ public class FitnessApp {
             System.out.println("Selection not valid...");
         }
     }
+
 
     // EFFECTS: saves the workoutlog to file
     private void saveWorkoutLog() {
