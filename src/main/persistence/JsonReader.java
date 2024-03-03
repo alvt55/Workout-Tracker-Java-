@@ -48,8 +48,8 @@ public class JsonReader {
 
     // EFFECTS: parses workoutlog from JSON object and returns it
     private WorkoutLog parseWorkoutLog(JSONObject jsonObject) {
-        ArrayList<PersonalBest> personalBests = new ArrayList<PersonalBest>();     //(ArrayList<PersonalBest>) jsonObject.get("personalbests");
-        ArrayList<GymSession> gymSessions = new ArrayList<GymSession>();     //(ArrayList<GymSession>) jsonObject.get("gymsessions");
+        ArrayList<PersonalBest> personalBests = new ArrayList<PersonalBest>();
+        ArrayList<GymSession> gymSessions = new ArrayList<GymSession>();
         WorkoutLog wl = new WorkoutLog(personalBests, gymSessions);
         addPersonalBests(wl, jsonObject);
         addGymSessions(wl, jsonObject);
