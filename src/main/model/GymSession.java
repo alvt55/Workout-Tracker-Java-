@@ -7,6 +7,7 @@ import persistence.Writable;
 import java.io.Writer;
 import java.util.ArrayList;
 
+// NOTE: some parts based on JsonSerializationDemo
 // represents a collection of gym exercises and info about the workout
 public class GymSession implements Writable {
     private String date; // month day, year

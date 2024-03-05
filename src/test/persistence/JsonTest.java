@@ -6,6 +6,7 @@ import model.GymExercise;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+// NOTE: some tests based on JsonSerializationDemo
 public class JsonTest {
     protected void checkExercise(GymExercise e, String n, int w, int bw, int s, int r) {
         assertEquals(n, e.getName());

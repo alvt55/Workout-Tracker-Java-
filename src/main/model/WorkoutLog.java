@@ -7,6 +7,7 @@ import persistence.Writable;
 import java.io.Writer;
 import java.util.ArrayList;
 
+// NOTE: some parts based on JsonSerializationDemo
 // stores all GymSessions and GymPersonalBests
 public class WorkoutLog implements Writable {
 

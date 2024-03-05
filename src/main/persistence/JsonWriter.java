@@ -5,8 +5,9 @@ import org.json.JSONObject;
 
 
 import java.io.*;
-
+// NOTE: based on JsonSerializationDemo
 // Represents a writer that writes JSON representation of workroom to file
+
 public class JsonWriter {
     private static final int TAB = 4;
     private PrintWriter writer;

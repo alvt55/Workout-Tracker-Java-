@@ -5,6 +5,7 @@ import persistence.Writable;
 
 import java.io.Writer;
 
+// NOTE: some parts based on JsonSerializationDemo
 // represents a personal best set for a single repetition including the weight, name of exercise and date
 public class PersonalBest implements Writable {
 

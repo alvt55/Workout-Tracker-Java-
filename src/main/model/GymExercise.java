@@ -3,6 +3,7 @@ package model;
 import org.json.JSONObject;
 import persistence.Writable;
 
+// NOTE: some parts based on JsonSerializationDemo
 // represents a single gym exercise, will be added to a GymWorkout
 public class GymExercise implements Writable {
     private String name;

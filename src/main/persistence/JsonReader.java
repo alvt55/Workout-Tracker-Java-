@@ -17,6 +17,7 @@ import java.util.stream.Stream;
 import model.WorkoutLog;
 import org.json.*;
 
+// NOTE: based on JsonSerializationDemo
 // Represents a reader that reads workoutlog from JSON data stored in file
 public class JsonReader {
     private String source;

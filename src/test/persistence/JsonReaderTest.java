@@ -13,6 +13,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// NOTE: some tests based on JsonSerializationDemo
 class JsonReaderTest extends JsonTest {
 
     @Test

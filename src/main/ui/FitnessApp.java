@@ -14,8 +14,9 @@ import java.util.Scanner;
 
 // app which uses user interactions and the WorkoutLog class
 // NOTE: based on Teller App class given in Phase 1 Module
+// NOTE: based on JsonSerializationDemo
 public class FitnessApp {
-    private static final String JSON_STORE = "workoutlog.json";
+    private static final String JSON_STORE = "data/workoutlog.json";
 
 
     private WorkoutLog log;
@@ -66,7 +67,7 @@ public class FitnessApp {
         } else if (command.equals("most")) {
             System.out.println();
             doMostWeightLifted();
-        } else if (command.equals("pbs")) {
+        } else if (command.equals("allpbs")) {
             System.out.println();
             doAllPersonalBests();
         } else if (command.equals("allgs")) {
@@ -130,7 +131,7 @@ public class FitnessApp {
         System.out.println("\nSelect from:");
         System.out.println("\tamount -> number of gym sessions");
         System.out.println("\tmost -> most weight lifted in a session");
-        System.out.println("\tpbs -> list of all personal bests");
+        System.out.println("\tallpbs -> list of all personal bests");
         System.out.println("\tallgs -> list of all gym sessions");
         System.out.println("-------------------------------------");
         System.out.println("\taddpb -> add a personal best");
