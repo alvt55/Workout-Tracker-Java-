@@ -7,10 +7,13 @@ import model.WorkoutLog;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 // app which uses user interactions and the WorkoutLog class
 // NOTE: based on Teller App class given in Phase 1 Module
@@ -19,13 +22,15 @@ public class FitnessApp {
     private static final String JSON_STORE = "data/workoutlog.json";
 
 
-    private WorkoutLog log;
+    protected WorkoutLog log;
     private ArrayList<PersonalBest> personalBests;
     private ArrayList<GymSession> gymSessions;
     private Scanner input;
 
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
+
+    private PersonalBestFrame pbFrame;
 
 
     // EFFECTS: runs the teller application
@@ -39,7 +44,10 @@ public class FitnessApp {
         boolean keepGoing = true;
         String command = null;
 
-        start();
+        start(); // initialize fields
+
+
+
 
         while (keepGoing) {
             displayMenu();
@@ -124,6 +132,9 @@ public class FitnessApp {
 
         input = new Scanner(System.in);
         input.useDelimiter("\n");
+
+
+
     }
 
     // EFFECTS: displays menu of options to user
