@@ -1,41 +1,56 @@
 package ui;
 
+import model.GymSession;
+import model.PersonalBest;
+import model.WorkoutLog;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class PersonalBestFrame implements ActionListener {
 
-    JButton addPbButton;
-    JPanel panel;
-    JFrame frame;
-    JTextField userDate;
-    JTextField userName;
-    JTextField userReps;
-    JTextField userSets;
-    JButton nextButton1;
-    JButton nextButton2;
+    public static final JButton RECORD_PB = new JButton("Record PB");
+    // initialize workout log
+    private ArrayList<GymSession> gymSessions = new ArrayList<GymSession>();
+    private ArrayList<PersonalBest> pbs = new ArrayList<PersonalBest>();
+    private WorkoutLog log = new WorkoutLog(pbs, gymSessions);
 
-    PersonalBestFrame() {
+
+    private JButton addPbButton;
+    private JPanel panel;
+    private JFrame frame;
+    private JTextField userDate;
+    private JTextField exerciseName;
+    private JTextField userWeight;
+    private JButton recordPbButton;
+    private JButton nextButton2;
+
+    public PersonalBestFrame() {
+        setup();
+
+        datePrompt();
+        exerciseNamePrompt();
+        weightPrompt();
+        recordPbButton();
+        frame.setVisible(true);
+    }
+
+    public void setup() {
         panel = new JPanel();
         frame = new JFrame();
         frame.setSize(500, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
         panel.setLayout(null);
-
-        datePrompt();
-        exerciseNamePrompt();
-        repPrompt();
-        setPrompt();
-        frame.setVisible(true);
-
     }
 
 
 
-    public void datePrompt() {
 
+
+    public void datePrompt() {
         JLabel dateLabel = new JLabel("Date"); // label
         dateLabel.setBounds(10, 20, 80, 25);
         panel.add(dateLabel);
@@ -44,9 +59,6 @@ public class PersonalBestFrame implements ActionListener {
         userDate.setBounds(100, 20, 165, 25);
         panel.add(userDate);
 
-
-
-
     }
     
     public void exerciseNamePrompt() {
@@ -54,49 +66,42 @@ public class PersonalBestFrame implements ActionListener {
         nameLabel.setBounds(10, 50, 80, 25);
         panel.add(nameLabel);
 
-        userName = new JTextField(); // textbox
-        userName.setBounds(100, 50, 165, 25);
-        panel.add(userName);
+        exerciseName = new JTextField(); // textbox
+        exerciseName.setBounds(100, 50, 165, 25);
+        panel.add(exerciseName);
     }
 
-    public void repPrompt() {
+    public void weightPrompt() {
 
-        JLabel repsLabel = new JLabel("Repetitions"); // label
-        repsLabel.setBounds(10, 80, 80, 25);
-        panel.add(repsLabel);
+        JLabel userWeight = new JLabel("Weight"); // label
+        userWeight.setBounds(10, 80, 80, 25);
+        panel.add(userWeight);
 
-        userReps = new JTextField(); // textbox
-        userReps.setBounds(100, 80, 165, 25);
-        panel.add(userReps);
-
-
-
+        this.userWeight = new JTextField(); // textbox
+        this.userWeight.setBounds(100, 80, 165, 25);
+        panel.add(this.userWeight);
 
     }
 
-    private void setPrompt() {
-        JLabel setsLabel = new JLabel("Sets"); // label
-        setsLabel.setBounds(10, 110, 80, 25);
-        panel.add(setsLabel);
-
-        userSets = new JTextField(); // textbox
-        userSets.setBounds(100, 110, 165, 25);
-        panel.add(userSets);
 
 
-        nextButton1 = new JButton("Next");
-        nextButton1.setBounds(10, 160, 80, 25);
-        panel.add(nextButton1);
+    private void recordPbButton() {
+        recordPbButton = RECORD_PB;
+        recordPbButton.setBounds(10, 160, 160, 25);
+        panel.add(recordPbButton);
 
-        nextButton1.addActionListener(this);
+        recordPbButton.addActionListener(this);
     }
 
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == nextButton1) {
-
+        if (recordPbButton.equals(e.getActionCommand())) {
+            String name = exerciseName.getText();
+            String date = userDate.getText();
+            int weight = Integer.parseInt(userWeight.getText());
+            log.addPersonalBest(new PersonalBest(name, date, weight));
         }
     }
 }
