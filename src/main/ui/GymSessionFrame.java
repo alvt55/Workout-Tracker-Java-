@@ -15,6 +15,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
 // JFrame for adding new gym sessions
 public class GymSessionFrame extends JFrame implements ActionListener {
 
@@ -34,6 +35,7 @@ public class GymSessionFrame extends JFrame implements ActionListener {
     private JFrame frame;
     private JPanel entryPanel;
     private JPanel viewPanel;
+    private JPanel imgPanel;
 
     // Date page
     private JLabel dateLabel;
@@ -64,8 +66,7 @@ public class GymSessionFrame extends JFrame implements ActionListener {
     private JTextArea sessionText;
 
     // image
-    ImageIcon arcImg;
-    JLabel display;
+
 
     // Json
     private static final String JSON_STORE = "data/workoutlog.json";
@@ -91,11 +92,12 @@ public class GymSessionFrame extends JFrame implements ActionListener {
     // EFFECTS: sets up view panel and entry panel, also creates JFrame
     public void gymSetup() {
         frame = new JFrame();
-        frame.setSize(800, 600);
+        frame.setSize(1200, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         setViewPanel();
         setEntryPanel();
+        setImagePanel();
         frame.setVisible(true);
     }
 
@@ -107,13 +109,9 @@ public class GymSessionFrame extends JFrame implements ActionListener {
         frame.add(entryPanel);
         entryPanel.setLayout(null);
 
-//        arcImg = new ImageIcon("arc-image.jpg");
-//        display = new JLabel(arcImg);
-//        display.setBounds(0, 300, 200, 200);
-//        entryPanel.add(display);
-
         setDateInput();
         setJsonButtons();
+
 
     }
 
@@ -122,11 +120,24 @@ public class GymSessionFrame extends JFrame implements ActionListener {
         viewPanel = new JPanel();
         viewPanel.setBounds(400, 0, 400, 600);
         viewPanel.setBackground(Color.lightGray);
+
+
         frame.add(viewPanel);
 
         updateViewSessions();
 
+    }
 
+
+    // EFFECTS: initializes values and img for the image panel
+    public void setImagePanel() {
+        imgPanel = new JPanel();
+        imgPanel.setBounds(800, 0, 400, 600);
+        ImageIcon arcImg = new ImageIcon(this.getClass().getResource("arc-image.jpg"));
+        JLabel display = new JLabel(arcImg);
+        display.setBounds(800,800,5,5);
+        imgPanel.add(display);
+        frame.add(imgPanel);
     }
 
 
@@ -172,6 +183,8 @@ public class GymSessionFrame extends JFrame implements ActionListener {
 
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds json buttons to the date page
     public void setJsonButtons() {
         saveButton = new JButton("Save");
         saveButton.setBounds(10, 400, 160, 25);
@@ -191,6 +204,7 @@ public class GymSessionFrame extends JFrame implements ActionListener {
         setWeightInput();
         setRepSetInput();
         exerciseButtons();
+
         frame.setVisible(true);
 
     }

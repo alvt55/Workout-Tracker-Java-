@@ -32,3 +32,12 @@ the amount of sets, repetitions and weight done for that exercise
 - As a user, when the FitnessApp application starts, I want to have the option of loading my workout records 
 (sessions and personal bests) and history from file. 
 
+## Phase 3 - Instructions for Grader 
+- You can generate the first required action related to the user story "adding multiple Xs to a Y" by
+entering a date, clicking next, inputting the exercise name, weight, reps/sets, then clicking submit, from
+there you can add another exercise by filling in the fields again, or click done to add another session 
+- You can generate the second required action related to the user story "adding multiple Xs to a Y" by clicking the 
+personal best button on the first page which will display that information in the text field below 
+- You can locate my visual component easily, always displayed on the right side of the application 
+- You can save the state of my application by clicking the save button at the bottom of the screen on the first page
+- You can reload the state of my application by clicking the load button at the bottom of the screen on the first page

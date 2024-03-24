@@ -1,13 +1,4 @@
 {
-    "gymsessions": [{
-        "date": "awef",
-        "listofgymexercises": [{
-            "reps": 1,
-            "sets": 1,
-            "name": "awef",
-            "bodyweight": 55,
-            "weight": 0
-        }]
-    }],
+    "gymsessions": [],
     "personalbests": []
 }
