@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+// JFrame for adding new gym sessions
 public class GymSessionFrame extends JFrame implements ActionListener {
 
     // initialize workout log
@@ -55,11 +56,11 @@ public class GymSessionFrame extends JFrame implements ActionListener {
     private JButton doneAddingButton;
 
     // Viewing
-    private JLabel mostWeightLabel;
+    private JTextArea mostWeightText;
+    private JTextArea sessionText;
 
 
-
-
+    // EFFECTS: initializes some fields, calls gym setup for panels
     public GymSessionFrame() {
         gymSessions = new ArrayList<GymSession>();
         pbs = new ArrayList<PersonalBest>();
@@ -68,6 +69,8 @@ public class GymSessionFrame extends JFrame implements ActionListener {
         frame.setVisible(true);
     }
 
+
+    // EFFECTS: sets up view panel and entry panel, also creates JFrame
     public void gymSetup() {
         frame = new JFrame();
         frame.setSize(800, 600);
@@ -75,11 +78,10 @@ public class GymSessionFrame extends JFrame implements ActionListener {
 
         setViewPanel();
         setEntryPanel();
-
-
-
+        frame.setVisible(true);
     }
 
+    // EFFECTS: starts menu "loop" for entry panel inputs
     public void setEntryPanel() {
         entryPanel = new JPanel();
         entryPanel.setBounds(0, 0, 400, 600);
@@ -88,20 +90,34 @@ public class GymSessionFrame extends JFrame implements ActionListener {
         entryPanel.setLayout(null);
 
         setDateInput();
-        frame.setVisible(true);
+
     }
 
-
+    // EFFECTS: initializes values for viewPanel
     public void setViewPanel() {
         viewPanel = new JPanel();
         viewPanel.setBounds(400, 0, 400, 600);
         viewPanel.setBackground(Color.lightGray);
         frame.add(viewPanel);
 
+        updateViewSessions();
+
     }
 
-    public void setDateInput() {
 
+    // MODIFIES: this
+    // EFFECTS: updates GymSessions on view panel
+    public void updateViewSessions() {
+        sessionText = new JTextArea();
+        sessionText.setBounds(400, 0, 400, 600);
+        sessionText.setText(log.allGymSessions());
+        viewPanel.add(sessionText);
+    }
+
+    // REQUIRES: dateTextField is a String
+    // MODIFIES: this
+    // EFFECTS: sets up all values and inputs on the date screen
+    public void setDateInput() {
 
         // label and text field
         dateLabel = new JLabel("Date"); // label
@@ -111,13 +127,11 @@ public class GymSessionFrame extends JFrame implements ActionListener {
         dateTextField.setBounds(100, 20, 100, 25);
         entryPanel.add(dateTextField);
 
-
         // next button
         dateButton = new JButton("Next");
         dateButton.setBounds(10, 160, 160, 25);
         entryPanel.add(dateButton);
         dateButton.addActionListener(this);
-
 
         // display most weight button
         mostWeightButton = new JButton("Most Weight Lifted");
@@ -125,13 +139,14 @@ public class GymSessionFrame extends JFrame implements ActionListener {
         entryPanel.add(mostWeightButton);
         mostWeightButton.addActionListener(this);
 
-        mostWeightLabel = new JLabel(""); // label
-        mostWeightLabel.setBounds(10, 210, 300, 25);
-        entryPanel.add(mostWeightLabel);
+        mostWeightText = new JTextArea(10, 3); // label
+        mostWeightText.setBounds(10, 230, 300, 80);
+        entryPanel.add(mostWeightText);
 
     }
 
 
+    // EFFECTS: calls methods for screen when inputting exercises
     private void setExerciseInput() {
         setExerciseNameInput();
         setWeightInput();
@@ -141,7 +156,9 @@ public class GymSessionFrame extends JFrame implements ActionListener {
 
     }
 
-
+    // REQUIRES: nameTextField is a String
+    // MODIFIES: this
+    // EFFECTS: sets up text and text fields for exercise name
     public void setExerciseNameInput() {
         exerciseNameLabel = new JLabel("Name"); // label
         exerciseNameLabel.setBounds(10, 50, 80, 25);
@@ -152,6 +169,8 @@ public class GymSessionFrame extends JFrame implements ActionListener {
         entryPanel.add(nameTextField);
     }
 
+    // REQUIRES: weightTextField and bodyWeightTextField are both int
+    // MODIFIES: this
     // EFFECTS: sets up input/labels for weight/bodyweight values
     public void setWeightInput() {
         weightLabel = new JLabel("Weight"); // label
@@ -172,6 +191,8 @@ public class GymSessionFrame extends JFrame implements ActionListener {
         entryPanel.add(bodyWeightTextField);
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets up combo box and labels for reps/sets
     private void setRepSetInput() {
 
         repLabel = new JLabel("Reps/Sets");
@@ -188,10 +209,11 @@ public class GymSessionFrame extends JFrame implements ActionListener {
         setBox.setBounds(160, 150, 50, 25);
         entryPanel.add(setBox);
 
-
     }
 
 
+    // MODIFIES: this
+    // EFFECTS: sets up buttons on exercise page for submitting and adding
     public void exerciseButtons() {
         submitExerciseButton = new JButton("Submit Exercise");
         submitExerciseButton.setBounds(10, 220, 160, 25);
@@ -206,6 +228,8 @@ public class GymSessionFrame extends JFrame implements ActionListener {
     }
 
 
+    // MODIFIES: this
+    // EFFECTS: adds a new exercise to the current session using the current exercise values
     public void addExerciseToLog() {
         currName = nameTextField.getText();
         currWeight = Integer.parseInt(weightTextField.getText());
@@ -218,26 +242,44 @@ public class GymSessionFrame extends JFrame implements ActionListener {
 
 
     @Override
+    // MODIFIES: this
+    // EFFECTS: changes behaviour based on buttons pressed
     public void actionPerformed(ActionEvent e) {
 
-        if (e.getSource() == dateButton) {
+        dateButtonReaction(e);
 
+        submitExerciseReaction(e);
+
+        doneAddingReaction(e);
+
+        mostWeightReaction(e);
+
+    }
+
+
+
+    // MODIFIES: this
+    // EFFECTS: hides date page, calls the exercise page and creates a new session with date
+    public void dateButtonReaction(ActionEvent e) {
+        if (e.getSource() == dateButton) {
             // hiding date page
             dateLabel.setVisible(false);
             dateTextField.setVisible(false);
             dateButton.setVisible(false);
+            mostWeightText.setVisible(false);
             mostWeightButton.setVisible(false);
             currDate = dateTextField.getText();
-
             // create new session
             currSession = new GymSession(new ArrayList<GymExercise>(), currDate);
             log.addGymSession(currSession);
-
-
             setExerciseInput();
-
         }
+    }
 
+
+    // MODIFIES: this
+    // EFFECTS: logs exercise, clears fields
+    public void submitExerciseReaction(ActionEvent e) {
         if (e.getSource() == submitExerciseButton) {
 
             addExerciseToLog();
@@ -248,7 +290,11 @@ public class GymSessionFrame extends JFrame implements ActionListener {
             bodyWeightTextField.setText("");
 
         }
+    }
 
+    // MODIFIES: this
+    // EFFECTS: calls date page, hides exercise inputs
+    private void doneAddingReaction(ActionEvent e) {
         if (e.getSource() == doneAddingButton) {
 
             exerciseNameLabel.setVisible(false);
@@ -262,17 +308,23 @@ public class GymSessionFrame extends JFrame implements ActionListener {
             setBox.setVisible(false);
             submitExerciseButton.setVisible(false);
             doneAddingButton.setVisible(false);
+            sessionText.setVisible(false);
 
+            updateViewSessions();
             setDateInput();
-        }
 
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: sets mostWeightText to the most weight lifted in the log
+    private void mostWeightReaction(ActionEvent e) {
         if (e.getSource() == mostWeightButton) {
             mostWeight = log.mostWeightLifted();
-            mostWeightLabel.setText(mostWeight);
+            mostWeightText.setText(mostWeight);
         }
-
-
     }
+
 
 
 }
