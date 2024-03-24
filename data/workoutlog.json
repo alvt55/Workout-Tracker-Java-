@@ -1,8 +1,13 @@
 {
-    "gymsessions": [],
-    "personalbests": [{
-        "datePB": "jan 25",
-        "name": "bench",
-        "weight": 292929
-    }]
+    "gymsessions": [{
+        "date": "awef",
+        "listofgymexercises": [{
+            "reps": 1,
+            "sets": 1,
+            "name": "awef",
+            "bodyweight": 55,
+            "weight": 0
+        }]
+    }],
+    "personalbests": []
 }

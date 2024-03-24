@@ -4,11 +4,15 @@ import model.GymExercise;
 import model.GymSession;
 import model.PersonalBest;
 import model.WorkoutLog;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 // JFrame for adding new gym sessions
@@ -59,9 +63,23 @@ public class GymSessionFrame extends JFrame implements ActionListener {
     private JTextArea mostWeightText;
     private JTextArea sessionText;
 
+    // image
+    ImageIcon arcImg;
+    JLabel display;
+
+    // Json
+    private static final String JSON_STORE = "data/workoutlog.json";
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+    private JButton saveButton;
+    private JButton loadButton;
+
+
 
     // EFFECTS: initializes some fields, calls gym setup for panels
     public GymSessionFrame() {
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         gymSessions = new ArrayList<GymSession>();
         pbs = new ArrayList<PersonalBest>();
         log = new WorkoutLog(pbs, gymSessions);
@@ -89,7 +107,13 @@ public class GymSessionFrame extends JFrame implements ActionListener {
         frame.add(entryPanel);
         entryPanel.setLayout(null);
 
+//        arcImg = new ImageIcon("arc-image.jpg");
+//        display = new JLabel(arcImg);
+//        display.setBounds(0, 300, 200, 200);
+//        entryPanel.add(display);
+
         setDateInput();
+        setJsonButtons();
 
     }
 
@@ -101,6 +125,7 @@ public class GymSessionFrame extends JFrame implements ActionListener {
         frame.add(viewPanel);
 
         updateViewSessions();
+
 
     }
 
@@ -143,6 +168,20 @@ public class GymSessionFrame extends JFrame implements ActionListener {
         mostWeightText.setBounds(10, 230, 300, 80);
         entryPanel.add(mostWeightText);
 
+
+
+    }
+
+    public void setJsonButtons() {
+        saveButton = new JButton("Save");
+        saveButton.setBounds(10, 400, 160, 25);
+        entryPanel.add(saveButton);
+        saveButton.addActionListener(this);
+
+        loadButton = new JButton("Load");
+        loadButton.setBounds(10, 450, 160, 25);
+        entryPanel.add(loadButton);
+        loadButton.addActionListener(this);
     }
 
 
@@ -254,6 +293,14 @@ public class GymSessionFrame extends JFrame implements ActionListener {
 
         mostWeightReaction(e);
 
+        if (e.getSource() == saveButton) {
+            saveWorkoutLog();
+        }
+
+        if (e.getSource() == loadButton) {
+            loadWorkoutLog();
+        }
+
     }
 
 
@@ -262,14 +309,16 @@ public class GymSessionFrame extends JFrame implements ActionListener {
     // EFFECTS: hides date page, calls the exercise page and creates a new session with date
     public void dateButtonReaction(ActionEvent e) {
         if (e.getSource() == dateButton) {
-            // hiding date page
+            // hiding date page and json buttons
             dateLabel.setVisible(false);
             dateTextField.setVisible(false);
             dateButton.setVisible(false);
             mostWeightText.setVisible(false);
             mostWeightButton.setVisible(false);
-            currDate = dateTextField.getText();
+            saveButton.setVisible(false);
+            loadButton.setVisible(false);
             // create new session
+            currDate = dateTextField.getText();
             currSession = new GymSession(new ArrayList<GymExercise>(), currDate);
             log.addGymSession(currSession);
             setExerciseInput();
@@ -312,7 +361,32 @@ public class GymSessionFrame extends JFrame implements ActionListener {
 
             updateViewSessions();
             setDateInput();
+            setJsonButtons();
 
+
+        }
+    }
+
+    // EFFECTS: saves the workoutlog to file
+    private void saveWorkoutLog() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(log);
+            jsonWriter.close();
+            System.out.println("Saved log to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads workoutlog from file
+    private void loadWorkoutLog() {
+        try {
+            log = jsonReader.read();
+            System.out.println("Loaded log from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
 
