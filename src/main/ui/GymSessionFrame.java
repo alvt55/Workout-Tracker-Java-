@@ -16,6 +16,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
+// sources
+// https://stackoverflow.com/questions/5071040/java-convert-integer-to-string
+// https://www.youtube.com/watch?v=EAxV_eoYrIg
+// https://docs.oracle.com/javase/tutorial/uiswing/components/button.html
+// https://www.youtube.com/watch?v=yGcYoz0s94E
+
 // JFrame for adding new gym sessions
 public class GymSessionFrame extends JFrame implements ActionListener {
 
@@ -65,7 +71,6 @@ public class GymSessionFrame extends JFrame implements ActionListener {
     private JTextArea mostWeightText;
     private JTextArea sessionText;
 
-    // image
 
 
     // Json
@@ -74,7 +79,6 @@ public class GymSessionFrame extends JFrame implements ActionListener {
     private JsonReader jsonReader;
     private JButton saveButton;
     private JButton loadButton;
-
 
 
     // EFFECTS: initializes some fields, calls gym setup for panels
@@ -150,6 +154,8 @@ public class GymSessionFrame extends JFrame implements ActionListener {
         viewPanel.add(sessionText);
     }
 
+
+
     // REQUIRES: dateTextField is a String
     // MODIFIES: this
     // EFFECTS: sets up all values and inputs on the date screen
@@ -180,12 +186,12 @@ public class GymSessionFrame extends JFrame implements ActionListener {
         entryPanel.add(mostWeightText);
 
 
-
     }
 
     // MODIFIES: this
     // EFFECTS: adds json buttons to the date page
     public void setJsonButtons() {
+
         saveButton = new JButton("Save");
         saveButton.setBounds(10, 400, 160, 25);
         entryPanel.add(saveButton);
@@ -329,8 +335,7 @@ public class GymSessionFrame extends JFrame implements ActionListener {
             dateButton.setVisible(false);
             mostWeightText.setVisible(false);
             mostWeightButton.setVisible(false);
-            saveButton.setVisible(false);
-            loadButton.setVisible(false);
+
             // create new session
             currDate = dateTextField.getText();
             currSession = new GymSession(new ArrayList<GymExercise>(), currDate);
@@ -373,9 +378,16 @@ public class GymSessionFrame extends JFrame implements ActionListener {
             doneAddingButton.setVisible(false);
             sessionText.setVisible(false);
 
+            dateTextField.setText("");
+            dateLabel.setVisible(true);
+            dateTextField.setVisible(true);
+            dateButton.setVisible(true);
+            mostWeightText.setVisible(true);
+            mostWeightButton.setVisible(true);
             updateViewSessions();
-            setDateInput();
-            setJsonButtons();
+//            setDateInput();
+
+
 
 
         }
@@ -402,6 +414,11 @@ public class GymSessionFrame extends JFrame implements ActionListener {
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }
+
+        updateViewSessions();
+
+        frame.pack();
+        frame.setSize(1200, 600);
     }
 
     // MODIFIES: this
