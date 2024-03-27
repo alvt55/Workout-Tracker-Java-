@@ -30,7 +30,6 @@ public class FitnessApp {
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
-    private PersonalBestFrame pbFrame;
 
 
     // EFFECTS: runs the teller application
@@ -65,7 +64,6 @@ public class FitnessApp {
 
     // MODIFIES: this
     // EFFECTS: processes user command
-
     private void processCommand(String command) {
         if (command.equals("amount")) {
             System.out.println();

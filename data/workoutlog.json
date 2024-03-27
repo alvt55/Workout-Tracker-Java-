@@ -1,19 +1,13 @@
 {
-    "gymsessions": [
-        {
-            "date": "awef",
-            "listofgymexercises": []
-        },
-        {
-            "date": "September 11, 2001",
-            "listofgymexercises": [{
-                "reps": 2,
-                "sets": 1,
-                "name": "Lizzonicus Airplanus",
-                "bodyweight": 0,
-                "weight": 419000
-            }]
-        }
-    ],
+    "gymsessions": [{
+        "date": "afe",
+        "listofgymexercises": [{
+            "reps": 1,
+            "sets": 1,
+            "name": "aewf",
+            "bodyweight": 2,
+            "weight": 0
+        }]
+    }],
     "personalbests": []
 }
