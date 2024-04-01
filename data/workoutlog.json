@@ -1,13 +1,34 @@
 {
-    "gymsessions": [{
-        "date": "afe",
-        "listofgymexercises": [{
-            "reps": 1,
-            "sets": 1,
-            "name": "aewf",
-            "bodyweight": 2,
-            "weight": 0
-        }]
-    }],
+    "gymsessions": [
+        {
+            "date": "jan 25",
+            "listofgymexercises": [{
+                "reps": 5,
+                "sets": 3,
+                "name": "bench",
+                "bodyweight": 0,
+                "weight": 150
+            }]
+        },
+        {
+            "date": "feb 5",
+            "listofgymexercises": [
+                {
+                    "reps": 4,
+                    "sets": 4,
+                    "name": "squat",
+                    "bodyweight": 0,
+                    "weight": 205
+                },
+                {
+                    "reps": 4,
+                    "sets": 4,
+                    "name": "deadlift",
+                    "bodyweight": 0,
+                    "weight": 225
+                }
+            ]
+        }
+    ],
     "personalbests": []
 }

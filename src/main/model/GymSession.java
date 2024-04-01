@@ -62,6 +62,7 @@ public class GymSession implements Writable {
     }
 
     @Override
+    // returns json
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("date", date);

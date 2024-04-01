@@ -41,3 +41,6 @@ personal best button on the first page which will display that information in th
 - You can locate my visual component easily, always displayed on the right side of the application 
 - You can save the state of my application by clicking the save button at the bottom of the screen on the first page
 - You can reload the state of my application by clicking the load button at the bottom of the screen on the first page
+
+## Phase 4: Task 2
+![img.png](img.png)

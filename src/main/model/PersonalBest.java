@@ -43,6 +43,7 @@ public class PersonalBest implements Writable {
     }
 
     @Override
+    // returns json
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);

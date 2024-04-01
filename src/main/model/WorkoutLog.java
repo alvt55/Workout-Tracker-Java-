@@ -42,6 +42,7 @@ public class WorkoutLog implements Writable {
     // EFFECTS: returns date and weight of GymSession with most cumulative weight lifted
     // if same weight, takes the first occurrence
     public String mostWeightLifted() {
+        EventLog.getInstance().logEvent(new Event("Displayed all most weight lifted"));
         int currWeight = 0;
         String currDate = "";
 
@@ -82,6 +83,8 @@ public class WorkoutLog implements Writable {
         }
 
         return list;
+
+
     }
 
     // MODIFIES: this
