@@ -44,7 +44,8 @@ public class EventTest {
         Event t = new Event("yes");
         PersonalBest e = new PersonalBest("", "", 23);
         assertEquals(o.hashCode(), t.hashCode());
-        assertTrue(o.equals(e));
+        assertFalse(o.equals(e));
+        assertTrue(o.equals(t));
         assertFalse(o.equals(f)); // null
     }
 }
