@@ -35,9 +35,10 @@ public class GymSession implements Writable {
 
 
     // MODIFIES: this
-    // EFFECTS: adds an exercise to the session
+    // EFFECTS: adds an exercise to the session - logs event
     public void addExercise(GymExercise exercise) {
         listOfGymExercise.add(exercise);
+        EventLog.getInstance().logEvent(new Event("Added " + exercise.getName() + " to " + date));
     }
 
     public ArrayList<GymExercise> getListOfGymExercise() {

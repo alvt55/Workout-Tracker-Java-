@@ -1,16 +1,13 @@
 package ui;
 
-import model.GymExercise;
-import model.GymSession;
-import model.PersonalBest;
-import model.WorkoutLog;
+import model.*;
+import model.Event;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,9 +18,9 @@ import java.util.ArrayList;
 // https://www.youtube.com/watch?v=EAxV_eoYrIg
 // https://docs.oracle.com/javase/tutorial/uiswing/components/button.html
 // https://www.youtube.com/watch?v=yGcYoz0s94E
-
+// https://www.google.com/url?sa=i&url=https%3A%2F%2Fgss.ubc.ca%2Flistings%2Farc-4%2F&psig=AOvVaw10c4BhbNuoLjJL6zcRrFyQ&ust=1711840574222000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCICFtJzNmoUDFQAAAAAdAAAAABAE
 // JFrame for adding new gym sessions
-public class GymSessionFrame extends JFrame implements ActionListener {
+public class GymSessionFrame extends JFrame implements ActionListener, WindowListener {
 
     // initialize workout log
     ArrayList<GymSession> gymSessions;
@@ -90,6 +87,50 @@ public class GymSessionFrame extends JFrame implements ActionListener {
         log = new WorkoutLog(pbs, gymSessions);
         gymSetup();
         frame.setVisible(true);
+
+    }
+
+    @Override
+    // N/A
+    public void windowOpened(WindowEvent e) {
+
+    }
+
+    @Override
+    // EFFECTS: calls print log when window is closed
+    public void windowClosing(WindowEvent e) {
+        printLog(EventLog.getInstance());
+    }
+
+    @Override
+    // N/A
+    public void windowClosed(WindowEvent e) {
+        //This will only be seen on standard output.
+
+    }
+
+    @Override
+    // N/A
+    public void windowIconified(WindowEvent e) {
+
+    }
+
+    @Override
+    // N/A
+    public void windowDeiconified(WindowEvent e) {
+
+    }
+
+    @Override
+    // N/A
+    public void windowActivated(WindowEvent e) {
+
+    }
+
+    @Override
+    // N/A
+    public void windowDeactivated(WindowEvent e) {
+
     }
 
 
@@ -99,11 +140,24 @@ public class GymSessionFrame extends JFrame implements ActionListener {
         frame.setSize(1200, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+
         setViewPanel();
         setEntryPanel();
         setImagePanel();
         frame.setVisible(true);
+        frame.addWindowListener(this);
     }
+
+
+    public void printLog(EventLog el) {
+        for (Event next : el) {
+            System.out.println(next.toString());
+        }
+
+        repaint();
+    }
+
+
 
     // EFFECTS: starts menu "loop" for entry panel inputs
     public void setEntryPanel() {

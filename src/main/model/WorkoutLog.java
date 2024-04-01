@@ -85,15 +85,17 @@ public class WorkoutLog implements Writable {
     }
 
     // MODIFIES: this
-    // EFFECTS: adds a gym personal best to log
+    // EFFECTS: adds a gym personal best to log - logs event
     public void addPersonalBest(PersonalBest pb) {
         personalBests.add(pb);
+        EventLog.getInstance().logEvent(new Event("Added " + pb.getName() + " to log"));
     }
 
     // MODIFIES: this
-    // EFFECTS: adds a gym session to log
+    // EFFECTS: adds a gym session to log - logs event
     public void addGymSession(GymSession g) {
         gymSessions.add(g);
+        EventLog.getInstance().logEvent(new Event("Added " + g.getDate() + " session to log"));
     }
 
 
