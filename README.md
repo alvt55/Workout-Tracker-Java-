@@ -44,3 +44,18 @@ personal best button on the first page which will display that information in th
 
 ## Phase 4: Task 2
 ![img.png](img.png)
+
+## Phase 4: Task 3 
+I believe my project would benefit greatly from refactoring. For example, when I have more time I could break up my
+GymSessionFrame into multiple classes. This class has everything for my GUI, which makes it very messy and also
+makes my methods difficult to work with as there are so many. I could make a separate class for each of the pages
+on my GUI, and an additional class for the viewing panel. By improving the cohesion and implementing the single
+responsibility principle, the code will be easier to work with. I won't have to worry about being unsure where a 
+method is located and where I should place certain variables as the classes will determine how to categorize them. 
+This is something I want to complete after my finals as I understand working with a design
+similar to the one submitted will not allow for easy collaboration. 
+
+Also, I would change the field of weight and
+bodyWeight in the GymExercise class. Instead of forcing a requires clause for either value to be 0, I could combine it
+into a single weight variable and have a boolean which determines if it is a bodyweight exercise or not. In my methods
+I would have different outcomes depending on the boolean.
