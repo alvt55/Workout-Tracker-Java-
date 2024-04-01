@@ -6,7 +6,9 @@ import org.junit.jupiter.api.Test;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GymSessionTest {
 
@@ -19,6 +21,7 @@ public class GymSessionTest {
 
     GymSession session;
 
+    EventLog el;
 
 
     @BeforeEach
@@ -33,6 +36,7 @@ public class GymSessionTest {
         exerciseList.add(bwExercise);
 
         session = new GymSession(exerciseList, "Feb 3, 2024");
+        el = EventLog.getInstance();
     }
 
     @Test
@@ -41,10 +45,22 @@ public class GymSessionTest {
     }
 
 
+    // w Event("Added " + exercise.getName() + " to " + date)
+
     @Test
     // 1. adding one exercise
     public void testAddOneExercise() {
         session.addExercise(exercise2);
+//        Event e = new Event("Added " + exercise2.getName() + " to " + session.getDate());
+//
+//        ArrayList<Event> l = new ArrayList<Event>();
+//
+//        for (Event next : el) {
+//            l.add(next);
+//        }
+//
+//        assertTrue(l.contains(e));
+
         ArrayList<GymExercise> temp = new ArrayList<GymExercise>();
         temp.add(exercise1);
         temp.add(bwExercise);

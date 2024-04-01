@@ -35,7 +35,7 @@ public class Event {
      * Gets the description of this event.
      * @return  the description of the event
      */
-    public String getDescription () {
+    public String getDescription() {
         return description;
     }
 
@@ -53,7 +53,8 @@ public class Event {
 
         Event otherEvent = (Event) other;
 
-        return (this.dateLogged.equals(otherEvent.dateLogged) &&
+        return (this.dateLogged.equals(otherEvent.dateLogged)
+                &&
                 this.description.equals(otherEvent.description));
     }
 
