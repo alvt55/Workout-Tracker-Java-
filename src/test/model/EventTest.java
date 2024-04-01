@@ -14,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 // from Alarm System example application
 public class EventTest {
     private Event e;
+    private Event f; // null
     private Date d;
 
     //NOTE: these tests might fail if time at which line (2) below is executed
@@ -41,9 +42,9 @@ public class EventTest {
     public void testHashAndEquals() {
         Event o = new Event("yes");
         Event t = new Event("yes");
-        Event f = new Event("no");
+        PersonalBest e = new PersonalBest("", "", 23);
         assertEquals(o.hashCode(), t.hashCode());
-        assertTrue(o.equals(t));
-        assertFalse(o.equals(f));
+        assertTrue(o.equals(e));
+        assertFalse(o.equals(f)); // null
     }
 }
