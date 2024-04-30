@@ -1,5 +1,3 @@
-# My Personal Project
-
 ## Task 1 
 A workout routine organizer. 
 
