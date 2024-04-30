@@ -1,7 +1,7 @@
-## Task 1 
+## Idea
 A workout routine organizer. 
 
-## Task 2
+## Description 
 My project will be an application which tracks fitness progress and stores past workouts. 
 This can include weight lifting and personal records 
 An example of a function that this application will have is being able to have accurate statistics
@@ -17,7 +17,7 @@ and goals, but I believe that staying organized also means using tools which are
 a person**. My goal is to create a program which can be used by a wider range of people, but still simple
 enough to personalize. 
 
-## Task 3 - User Stories
+## User Stories
 - As a user, I want to add a recent weight lifting session to my tracker along with 
 the exercises done
 - As a user, I want to add a certain exercise to my weight lifting session along with 
@@ -25,12 +25,12 @@ the amount of sets, repetitions and weight done for that exercise
 - As a user, I want to see a list of the personal records set for each exercise along with the respective dates 
 - As a user, I want to see the amount of times I have went to the gym 
 
-## Phase 2 - User stories 
+## JSon Persistence User stories 
 - As a user, I want to save my gym logs and personal best entries to file (if I so choose). 
 - As a user, when the FitnessApp application starts, I want to have the option of loading my workout records 
 (sessions and personal bests) and history from file. 
 
-## Phase 3 - Instructions for Grader 
+## Instructions
 - You can generate the first required action related to the user story "adding multiple Xs to a Y" by
 entering a date, clicking next, inputting the exercise name, weight, reps/sets, then clicking submit, from
 there you can add another exercise by filling in the fields again, or click done to add another session 
@@ -40,10 +40,10 @@ personal best button on the first page which will display that information in th
 - You can save the state of my application by clicking the save button at the bottom of the screen on the first page
 - You can reload the state of my application by clicking the load button at the bottom of the screen on the first page
 
-## Phase 4: Task 2
+## Event Log 
 ![img.png](img.png)
 
-## Phase 4: Task 3 
+## Possible Improvements
 I believe my project would benefit greatly from refactoring. For example, when I have more time I could break up my
 GymSessionFrame into multiple classes. This class has everything for my GUI, which makes it very messy and also
 makes my methods difficult to work with as there are so many. I could make a separate class for each of the pages
