@@ -1,6 +1,8 @@
 ## Idea
 A workout routine organizer. 
 
+Video demo: https://youtu.be/QPNMAVPAGiI
+
 ## Description 
 My project will be an application which tracks fitness progress and stores past workouts. 
 This can include weight lifting and personal records 
